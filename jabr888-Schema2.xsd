@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ArrayOfProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Product"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Product">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Name"/>
+        <xs:element ref="Description"/>
+        <xs:element ref="Price"/>
+        <xs:element ref="Origins"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="OriginType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Australia"/>
+            <xs:enumeration value="Fiji"/>
+            <xs:enumeration value="France"/>
+            <xs:enumeration value="India"/>
+            <xs:enumeration value="New Zealand"/>
+            <xs:enumeration value="South Korea"/>
+            <xs:enumeration value="Vietnam"/>
+        </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Name" type="xs:string"/>
+  <xs:element name="Description" type="xs:string"/>
+  <xs:element name="Price" type="xs:decimal"/>
+  <xs:element name="Origins">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Origin"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Origin" type="OriginType"/>
+</xs:schema>
